@@ -49,7 +49,7 @@ app.listen(PORT, err => {
         db = c.db(MDB);
         app.emit("running");
     });
-    console.log(`api-server listening on port ${PORT}`);
+    console.log(`api-server listening on server port ${PORT}`);
 });
 
 module.exports = app;
