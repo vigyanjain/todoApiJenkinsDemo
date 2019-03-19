@@ -85,18 +85,17 @@ pipeline {
                         if ( !(j["stateName"] == "CREATING") ){
                             stillBuilding = false
                             connectionString = j["srvAddress"]
-                            println connectionString
-                            println connectionString.split("//")
+                            connectionString = connectionString.split "//"
+                            connectionString = connectionString[0] + "//" + userName + ":" + password + "@" + connectionString[1]
                             j = ""
                         } else {
-                            print(j["stateName"] + "(" + resp.status + "): sleeping 10 seconds")
+                            println j["stateName"] + "(" + resp.status + "): sleeping 10 seconds"
 
                             //unset json before sleeping, json is not serializable
                             j = ""
                             sleep 10
                         }
                     }
-                    // here we will need to update the connection string with username and password
                 }
             }
         }
@@ -104,6 +103,7 @@ pipeline {
         stage("seedDatabase"){
             steps {
                 echo "nothing to seed as tests will drop collection and test insert"
+		echo "using $connectionString to connect to the database"
             }
         }
         stage("buildJsApp") {
