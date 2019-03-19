@@ -103,17 +103,23 @@ pipeline {
         stage("seedDatabase"){
             steps {
                 echo "nothing to seed as tests will drop collection and test insert"
-		echo "using $connectionString to connect to the database"
+                echo "using $connectionString to connect to the database"
+
             }
         }
         stage("buildJsApp") {
             steps {
-                echo "build js app"
+                echo "build js app (using current workspace)"
+                sh "touch ./.env"
+                sh "echo PORT=4000 > ./.env"
+                sh "echo MURI=$connectionString >> ./.env"
+                sh "echo MDB=demo >> ./.env"
+                sh "npm install"
             }
         }
         stage("testJsApp") {
             steps {
-                echo "test js app"
+                sh "npm test"
             }
         }
         stage("destroyApp") {
