@@ -147,10 +147,10 @@ pipeline {
                             j = ""
                             deleting = false
                         } else {
-                            print(j["stateName"] + "(" + resp.status + "): sleeping 10 seconds")
+                            print(j["stateName"] + "(" + resp.status + "): sleeping 40 seconds")
                             //unset json before sleeping, json is not serializable
                             j = ""
-                            sleep 10
+                            sleep 40
                         }
                     }
                     println("successfully destroyed atlas database")
