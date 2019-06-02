@@ -52,7 +52,7 @@ pipeline {
                         \"providerSettings\" : {
                             \"providerName\" : \"AWS\",
                             \"instanceSizeName\" : \"M10\",
-                            \"regionName\" : \"AP-SOUTHEAST-2\"
+                            \"regionName\" : \"AP_SOUTHEAST_2\"
                         }
                     }"""
 
