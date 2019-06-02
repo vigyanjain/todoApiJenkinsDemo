@@ -70,10 +70,10 @@ pipeline {
                     }
 
                     if( j["stateName"] == "CREATING"){
-                        println("Creating cluster: will sleep for 20 seconds")
+                        println("Creating cluster: will sleep for 40 seconds")
                         //unset json before sleeping, json is not serializable
                         j = ""
-                        sleep 20
+                        sleep 40
                     }
 
                     //check clusterUrl if == ""//
@@ -89,11 +89,11 @@ pipeline {
                             connectionString = connectionString[0] + "//" + userName + ":" + password + "@" + connectionString[1]
                             j = ""
                         } else {
-                            println j["stateName"] + "(" + resp.status + "): sleeping 10 seconds"
+                            println j["stateName"] + "(" + resp.status + "): sleeping 40 seconds"
 
                             //unset json before sleeping, json is not serializable
                             j = ""
-                            sleep 10
+                            sleep 40
                         }
                     }
                 }
